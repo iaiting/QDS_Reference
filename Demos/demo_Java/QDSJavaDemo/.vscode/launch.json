@@ -1,0 +1,26 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Demo<QDSJavaDemo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "qds.demo.Demo",
+            "projectName": "QDSJavaDemo",
+            "args": "-s 222.186.50.178 -p 8889 -k 0U{Si3n2cuWsb!gaz]?xT4q/n=Or6*s{3B34CjY4 -K q=Up]k.!$:(2*wRk@&y/M{Cj$y-]Ay.u2KWH)oED -A -w"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Attach)",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 0
+        }
+    ]
+}
