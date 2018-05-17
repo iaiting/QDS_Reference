@@ -11,61 +11,73 @@ namespace QDS.Demo
     {
         override public void OnSubscribe_SSEL2_Static(IntPtr RealValuePtr)
         {
+            //上交所L2静态数据
             OnSubscribe(MsgType.Msg_SSEL2_Static, RealValuePtr);
         }
 
         override public void OnSubscribe_SSEL2_Quotation(IntPtr RealValuePtr)
         {
+            //上交所L2实时行情
             OnSubscribe(MsgType.Msg_SSEL2_Quotation, RealValuePtr);
         }
 
         override public void OnSubscribe_SSEL2_Index(IntPtr RealValuePtr)
         {
+            //上交所L2指数行情
             OnSubscribe(MsgType.Msg_SSEL2_Index, RealValuePtr);
         }
 
         override public void OnSubscribe_SSEL2_Transaction(IntPtr RealValuePtr)
         {
+            //上交所L2逐笔成交
             OnSubscribe(MsgType.Msg_SSEL2_Transaction,RealValuePtr);
         }
 
         override public void OnSubscribe_SSEL2_Auction(IntPtr RealValuePtr)
         {
+            //上交所L2虚拟集合竞价
             OnSubscribe(MsgType.Msg_SSEL2_Auction, RealValuePtr);
         }
 
         override public void OnSubscribe_SSEL2_Overview(IntPtr RealValuePtr)
         {
+            //上交所L2市场总览
             OnSubscribe(MsgType.Msg_SSEL2_Overview, RealValuePtr);
         }
 
         override public void OnSubscribe_SZSEL2_Static(IntPtr RealValuePtr)
         {
+            //深交所L2静态数据
             OnSubscribe(MsgType.Msg_SZSEL2_Static, RealValuePtr);
         }
 
         override public void OnSubscribe_SZSEL2_Quotation(IntPtr RealValuePtr)
         {
+            //深交所L2实时行情
             OnSubscribe(MsgType.Msg_SZSEL2_Quotation, RealValuePtr);
         }
 
         override public void OnSubscribe_SZSEL2_Status(IntPtr RealValuePtr)
         {
+            //深交所L2证券状态
             OnSubscribe(MsgType.Msg_SZSEL2_Status, RealValuePtr);
         }
 
         override public void OnSubscribe_SZSEL2_Index(IntPtr RealValuePtr)
         {
+            //深交所L2指数行情
             OnSubscribe(MsgType.Msg_SZSEL2_Index, RealValuePtr);
         }
 
         override public void OnSubscribe_SZSEL2_Order(IntPtr RealValuePtr)
         {
+            //深交所L2逐笔委托
             OnSubscribe(MsgType.Msg_SZSEL2_Order, RealValuePtr);
         }
 
         override public void OnSubscribe_SZSEL2_Transaction(IntPtr RealValuePtr)
         {
+            //深交所L2逐笔成交
             OnSubscribe(MsgType.Msg_SZSEL2_Transaction, RealValuePtr);
         }
 

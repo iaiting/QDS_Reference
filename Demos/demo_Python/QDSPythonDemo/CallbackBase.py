@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import sys
 sys.path.append(os.path.dirname(__file__) + "/sdk")
@@ -9,39 +11,51 @@ from QDSDataType import *
 
 class CallbackBase(QDSApiCallbackBase):
     def OnSubscribe_SSEL2_Static(self, RealValuePtr):
+        #上交所L2静态数据
         self.OnSubscribe(MsgType.Msg_SSEL2_Static.value, RealValuePtr)
 
     def OnSubscribe_SSEL2_Quotation(self, RealValuePtr):
+        #上交所L2实时行情
         self.OnSubscribe(MsgType.Msg_SSEL2_Quotation.value, RealValuePtr)
 
     def OnSubscribe_SSEL2_Index(self, RealValuePtr):
+        #上交所L2指数行情
         self.OnSubscribe(MsgType.Msg_SSEL2_Index.value, RealValuePtr)
 
     def OnSubscribe_SSEL2_Transaction(self, RealValuePtr):
+        #上交所L2逐笔成交
         self.OnSubscribe(MsgType.Msg_SSEL2_Transaction.value, RealValuePtr)
 
     def OnSubscribe_SSEL2_Auction(self, RealValuePtr):
+        #上交所L2虚拟集合竞价
         self.OnSubscribe(MsgType.Msg_SSEL2_Auction.value, RealValuePtr)
 
     def OnSubscribe_SSEL2_Overview(self, RealValuePtr):
+        #上交所L2市场总览
         self.OnSubscribe(MsgType.Msg_SSEL2_Overview.value, RealValuePtr)
 
     def OnSubscribe_SZSEL2_Static(self,RealValuePtr):
+        #深交所L2静态数据
         self.OnSubscribe(MsgType.Msg_SZSEL2_Static.value, RealValuePtr)
 
     def OnSubscribe_SZSEL2_Quotation(self, RealValuePtr):
+        #深交所L2实时行情
         self.OnSubscribe(MsgType.Msg_SZSEL2_Quotation.value, RealValuePtr)
 
     def OnSubscribe_SZSEL2_Status(self, RealValuePtr):
+        #深交所L2证券状态
         self.OnSubscribe(MsgType.Msg_SZSEL2_Status.value, RealValuePtr)
 
     def OnSubscribe_SZSEL2_Index(self, RealValuePtr):
+        #深交所L2指数行情
         self.OnSubscribe(MsgType.Msg_SZSEL2_Index.value, RealValuePtr)
 
     def OnSubscribe_SZSEL2_Order(self, RealValuePtr):
+        #深交所L2逐笔委托
         self.OnSubscribe(MsgType.Msg_SZSEL2_Order.value, RealValuePtr)
 
     def OnSubscribe_SZSEL2_Transaction(self, RealValuePtr):
+        #深交所L2逐笔成交
         self.OnSubscribe(MsgType.Msg_SZSEL2_Transaction.value, RealValuePtr)
   
 

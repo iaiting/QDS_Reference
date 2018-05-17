@@ -12,50 +12,62 @@ public class CallBackBase extends QDSApiCallbackBase {
 	}
 
 	public void OnSubscribe_SSEL2_Static(Pointer RealValuePtr) {
+		//上交所L2静态数据
 		OnSubscribe(MsgType.Msg_SSEL2_Static, RealValuePtr);
 	}
 
 	public void OnSubscribe_SSEL2_Quotation(Pointer RealValuePtr) {
+		//上交所L2实时行情
 		OnSubscribe(MsgType.Msg_SSEL2_Quotation, RealValuePtr);
 	}
 
 	public void OnSubscribe_SSEL2_Index(Pointer RealValuePtr) {
+		//上交所L2指数行情
 		OnSubscribe(MsgType.Msg_SSEL2_Index, RealValuePtr);
 	}
 
 	public void OnSubscribe_SSEL2_Transaction(Pointer RealValuePtr) {
+		//上交所L2逐笔成交
 		OnSubscribe(MsgType.Msg_SSEL2_Transaction, RealValuePtr);
 	}
 
 	public void OnSubscribe_SSEL2_Auction(Pointer RealValuePtr) {
+		//上交所L2虚拟集合总价
 		OnSubscribe(MsgType.Msg_SSEL2_Auction, RealValuePtr);
 	}
 
 	public void OnSubscribe_SSEL2_Overview(Pointer RealValuePtr) {
+		//上交所L2市场总览
 		OnSubscribe(MsgType.Msg_SSEL2_Overview, RealValuePtr);
 	}
 
 	public void OnSubscribe_SZSEL2_Static(Pointer RealValuePtr) {
+		//深交所L2静态数据
 		OnSubscribe(MsgType.Msg_SZSEL2_Static, RealValuePtr);
 	}
 
 	public void OnSubscribe_SZSEL2_Quotation(Pointer RealValuePtr) {
+		//深交所L2实时行情
 		OnSubscribe(MsgType.Msg_SZSEL2_Quotation, RealValuePtr);
 	}
 
 	public void OnSubscribe_SZSEL2_Status(Pointer RealValuePtr) {
+		//深交所L2证券状态
 		OnSubscribe(MsgType.Msg_SZSEL2_Status, RealValuePtr);
 	}
 
 	public void OnSubscribe_SZSEL2_Index(Pointer RealValuePtr) {
+		//深交所L2指数行情
 		OnSubscribe(MsgType.Msg_SZSEL2_Index, RealValuePtr);
 	}
 
 	public void OnSubscribe_SZSEL2_Order(Pointer RealValuePtr) {
+		//深交所L2逐笔委托
 		OnSubscribe(MsgType.Msg_SZSEL2_Order, RealValuePtr);
 	}
 
 	public void OnSubscribe_SZSEL2_Transaction(Pointer RealValuePtr) {
+		//深交所L2逐笔成交
 		OnSubscribe(MsgType.Msg_SZSEL2_Transaction, RealValuePtr);
 	}
 
