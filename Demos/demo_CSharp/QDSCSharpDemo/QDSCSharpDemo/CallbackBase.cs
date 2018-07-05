@@ -92,6 +92,8 @@ namespace QDS.Demo
                     consoleStr += "MsgType: SSEL2_Static --";
                     consoleStr += " QDSTime:" + SSEL2_StaticValue.QDSTime;
                     consoleStr += " Symbol:" + SSEL2_StaticValue.Symbol;
+                    consoleStr += " SecurityName:" + SSEL2_StaticValue.SecurityName;
+                    consoleStr += " TradeDate:" + SSEL2_StaticValue.TradeDate;
                     break;
                 case MsgType.Msg_SSEL2_Quotation:
                     //上交所L2实时行情
@@ -134,6 +136,8 @@ namespace QDS.Demo
                     consoleStr += "MsgType: SZSEL2_Static --";
                     consoleStr += " QDSTime:" + SZSEL2_StaticValue.QDSTime;
                     consoleStr += " Symbol:" + SZSEL2_StaticValue.Symbol;
+                    consoleStr += " TradeDate:" + SZSEL2_StaticValue.TradeDate;
+                    consoleStr += " QualificationClass:" + SZSEL2_StaticValue.QualificationClass;
                     break;
                 case MsgType.Msg_SZSEL2_Quotation:
                     //深交所L2实时行情
@@ -141,6 +145,9 @@ namespace QDS.Demo
                     consoleStr += "MsgType: SZSEL2_Quotation --";
                     consoleStr += " QDSTime:" + SZSEL2_QuotationValue.QDSTime;
                     consoleStr += " Symbol:" + SZSEL2_QuotationValue.Symbol;
+                    consoleStr += " WtAvgRate:" + SZSEL2_QuotationValue.WtAvgRate;
+                    consoleStr += " WtAvgRateUpdown:" + SZSEL2_QuotationValue.WtAvgRateUpdown;
+                    consoleStr += " PreWtAvgRate:" + SZSEL2_QuotationValue.PreWtAvgRate;
                     break;
                 case MsgType.Msg_SZSEL2_Transaction:
                     //深交所L2逐笔成交

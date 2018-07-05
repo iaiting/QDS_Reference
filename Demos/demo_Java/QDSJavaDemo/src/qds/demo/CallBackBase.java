@@ -95,7 +95,8 @@ public class CallBackBase extends QDSApiCallbackBase {
 			//上交所L2静态数据
 			SSEL2_Static value = (SSEL2_Static) SSEL2_Static.newInstance(SSEL2_Static.class, RealValuePtr);
 			value.read();
-			consoleStr = consoleStr + "MsgType:SSEL2_Static -- QDSTime:" + value.QDSTime + " Symbol:" + ByteToString(value.Symbol);
+			consoleStr = consoleStr + "MsgType:SSEL2_Static -- QDSTime:" + value.QDSTime + " Symbol:" + ByteToString(value.Symbol)
+				+" SecurityName" + value.SecurityName + " TradeDate" + value.TradeDate;
 		}
 		else if (msgType == MsgType.Msg_SSEL2_Quotation)
 		{
@@ -137,14 +138,16 @@ public class CallBackBase extends QDSApiCallbackBase {
 			//深交所L2静态数据
 			SZSEL2_Static value = (SZSEL2_Static) SZSEL2_Static.newInstance(SZSEL2_Static.class, RealValuePtr);
 			value.read();
-			consoleStr = consoleStr + "MsgType:SZSEL2_Static -- QDSTime:" + value.QDSTime + " Symbol:" + ByteToString(value.Symbol);
+			consoleStr = consoleStr + "MsgType:SZSEL2_Static -- QDSTime:" + value.QDSTime + " Symbol:" + ByteToString(value.Symbol)
+				+ " TradeDate" + value.TradeDate + " QualificationClass" + ByteToString(value.QualificationClass);
 		}
 		else if (msgType == MsgType.Msg_SZSEL2_Quotation)
 		{
 			//深交所L2实时行情
 			SZSEL2_Quotation value = (SZSEL2_Quotation) SZSEL2_Quotation.newInstance(SZSEL2_Quotation.class, RealValuePtr);
 			value.read();
-			consoleStr = consoleStr + "MsgType:SZSEL2_Quotation -- QDSTime:" + value.QDSTime + " Symbol:" + ByteToString(value.Symbol);
+			consoleStr = consoleStr + "MsgType:SZSEL2_Quotation -- QDSTime:" + value.QDSTime + " Symbol:" + ByteToString(value.Symbol)
+				+ " WtAvgRate" + value.WtAvgRate + " WtAvgRateUpdown" + value.WtAvgRateUpdown + " PreWtAvgRate" + value.PreWtAvgRate;
 		}
 		else if (msgType == MsgType.Msg_SZSEL2_Transaction)
 		{

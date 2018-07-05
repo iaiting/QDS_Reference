@@ -13,6 +13,6 @@
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>-s 113.105.152.65 -p 8889 -k "9HYc#%28%29:/%406Tqb-Y{xViEVElE8}S.Il:l5gP]U%2aS" -K "KvDR&gt;c{Sz:gOA%29sEPX]6rpZ#vOh=4m{&gt;/H=GGc%400" -A -w</StartArguments>
+    <StartArguments>-s 113.105.152.65 -p 8890 -k "9HYc#%28%29:/%406Tqb-Y{xViEVElE8}S.Il:l5gP]U%2aS" -K "KvDR&gt;c{Sz:gOA%29sEPX]6rpZ#vOh=4m{&gt;/H=GGc%400" -A -w</StartArguments>
   </PropertyGroup>
 </Project>

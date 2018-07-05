@@ -61,7 +61,7 @@ class CallbackBase(QDSApiCallbackBase):
 
     def OnSubscribe(self, msgType, RealValuePtr):
         if msgType == MsgType.Msg_SSEL2_Static.value:
-            print ("MsgType: SSEL2_Static -- QDSTime:" + str(RealValuePtr.contents.QDSTime) + " Symbol:" + str(RealValuePtr.contents.Symbol))
+            print ("MsgType: SSEL2_Static -- QDSTime:" + str(RealValuePtr.contents.QDSTime) + " Symbol:" + str(RealValuePtr.contents.Symbol) + " SecurityName" + str(RealValuePtr.contents.SecurityName) + " TradeDate" + str(RealValuePtr.contents.TradeDate))
         elif msgType == MsgType.Msg_SSEL2_Quotation.value:
             print ("MsgType: SSEL2_Quotation -- QDSTime:" + str(RealValuePtr.contents.QDSTime) + " Symbol:" + str(RealValuePtr.contents.Symbol))
         elif msgType == MsgType.Msg_SSEL2_Transaction.value:
@@ -73,9 +73,9 @@ class CallbackBase(QDSApiCallbackBase):
         elif msgType == MsgType.Msg_SSEL2_Overview.value:
             print ("MsgType: SSEL2_Overview -- QDSTime:" + str(RealValuePtr.contents.QDSTime) + " Symbol:" + str(RealValuePtr.contents.Symbol))
         elif msgType == MsgType.Msg_SZSEL2_Static.value:
-            print ("MsgType: SZSEL2_Static -- QDSTime:" + str(RealValuePtr.contents.QDSTime) + " Symbol:" + str(RealValuePtr.contents.Symbol))
+            print ("MsgType: SZSEL2_Static -- QDSTime:" + str(RealValuePtr.contents.QDSTime) + " Symbol:" + str(RealValuePtr.contents.Symbol) + " TradeDate" + str(RealValuePtr.contents.TradeDate) + " QualificationClass" + str(RealValuePtr.contents.QualificationClass))
         elif msgType == MsgType.Msg_SZSEL2_Quotation.value:
-            print ("MsgType: SZSEL2_Quotation -- QDSTime:" + str(RealValuePtr.contents.QDSTime) + " Symbol:" + str(RealValuePtr.contents.Symbol))
+            print ("MsgType: SZSEL2_Quotation -- QDSTime:" + str(RealValuePtr.contents.QDSTime) + " Symbol:" + str(RealValuePtr.contents.Symbol) + " WtAvgRate:" + str(RealValuePtr.contents.WtAvgRate) + " WtAvgRateUpdown:" + str(RealValuePtr.contents.WtAvgRateUpdown) + " PreWtAvgRate" + str(RealValuePtr.contents.PreWtAvgRate))
         elif msgType == MsgType.Msg_SZSEL2_Transaction.value:
             print ("MsgType: SZSEL2_Transaction -- QDSTime:" + str(RealValuePtr.contents.QDSTime) + " Symbol:" + str(RealValuePtr.contents.Symbol))
         elif msgType == MsgType.Msg_SZSEL2_Index.value:
