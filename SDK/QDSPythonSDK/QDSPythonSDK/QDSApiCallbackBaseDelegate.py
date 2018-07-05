@@ -4,8 +4,8 @@ from os import path
 from QDSDataType import *
 from QDSStruct import *
 
-
 cdll.LoadLibrary(path.dirname(__file__) + "/libs/libzmq.dll")
+cdll.LoadLibrary(path.dirname(__file__) + "/libs/zmqpp.dll")
 cLib = cdll.LoadLibrary(path.dirname(__file__) + "/libs/wQDSApi.dll")
 
 
