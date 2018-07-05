@@ -62,12 +62,12 @@ public class QDSStruct {
 
 	public static class SSEL2_Static extends Structure
 	{
-		public long	QDSTime;		                 	//数据接收时间: 从1971/1/1开始的微秒数
+		public long	QDSTime;		                 	//数据接收时间: 从1970/1/1开始的微秒数
 		public long Reserved;                    		//保留
 		public int Time;                               //数据生成时间，标识接口中本记录更新时间HHMMSSMMM
 	    public byte[] Symbol = new byte[40];                 //证券代码, 
 	    public byte[] ISINCode = new byte[12];                       //ISIN代码, 
-	    public byte[] SecurityName = new byte[20];    //证券名称, 
+	    public byte[] SecurityName = new byte[40];    //证券名称, 
 	    public byte[] SecurityEN = new byte[24];        //英文证券名称, 
 	    public byte[] SymbolUnderlying = new byte[40];       //基础证券代码, 
 	    public byte[] MarketType = new byte[6];                      //市场种类, ‘ASHR’表示A股市场；‘BSHR’表示B股市场；‘CSHR‘表示国际版市场。
@@ -104,6 +104,7 @@ public class QDSStruct {
 	                                                            //1 为重点指数
 	                                                            //2 为全貌指数
 	                                                            //其他可根据需要扩展。
+	    public int TradeDate;					//市场日期,交易日 YYYYMMDD
 		
 
 		@Override
@@ -147,7 +148,8 @@ public class QDSStruct {
 			strList.add("TotalMarketValue");
 			strList.add("MarketValueRatio");
 			strList.add("StaticPERatio");
-			strList.add("IndexLevelStatus");		
+			strList.add("IndexLevelStatus");
+			strList.add("TradeDate");
 			return strList;
 		}	
 	}
@@ -155,7 +157,7 @@ public class QDSStruct {
 	
 	public static class SSEL2_Quotation extends Structure
 	{		
-		public long QDSTime;                        //数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;                        //数据接收时间: 从1970/1/1开始的微秒数
 		public long Reserved;                       //保留
 		public int Time;                            //数据生成时间, 最新订单时间（毫秒）;143025001 表示 14:30:25.001
 		public byte[] Symbol = new byte[40];     //证券代码, 
@@ -274,7 +276,7 @@ public class QDSStruct {
 
 	public static class SSEL2_Transaction extends Structure
 	{
-		public long QDSTime;		       	//数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		       	//数据接收时间: 从1970/1/1开始的微秒数
 		public long Reserved;              	//保留
 		public int TradeTime;              //成交时间(毫秒), 14302506 表示14:30:25.06
 		public int RecID;                  //业务索引, 从 1 开始，按 TradeChannel连续
@@ -309,7 +311,7 @@ public class QDSStruct {
 
 	public static class SSEL2_Index extends Structure
 	{
-		public long QDSTime;		       	//数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		       	//数据接收时间: 从1970/1/1开始的微秒数
 		public long Reserved;              	//保留
 		public int Time;                   //数据生成时间(毫秒), 143025000 表示 14:30:25000
 		public int  TradeTime;              //成交时间(毫秒),
@@ -346,7 +348,7 @@ public class QDSStruct {
 
 	public static class SSEL2_Auction extends Structure
 	{
-		public long QDSTime;		       	//数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		       	//数据接收时间: 从1970/1/1开始的微秒数
 		public long Reserved;              	//保留
 		public int Time;                   //数据生成时间(毫秒), 143025000 表示 14:30:25000
 		public byte[] Symbol = new byte[40];     //证券代码,  
@@ -374,7 +376,7 @@ public class QDSStruct {
 
 	public static class SSEL2_Overview extends Structure
 	{
-		public long QDSTime;		       	//数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		       	//数据接收时间: 从1970/1/1开始的微秒数
 		public long Reserved;              	//保留
 		public int Time;                   //数据生成时间(毫秒), 143025000 表示 14:30:25000
 		public byte[] Symbol = new byte[40];     //证券代码,  
@@ -398,7 +400,7 @@ public class QDSStruct {
 
 	public static class SZSEL2_Static extends Structure
 	{
-		public long QDSTime;		                 	//数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		                 	//数据接收时间: 从1970/1/1开始的微秒数
 		public byte[] Symbol = new byte[40];                 	//证券代码，8个字符
 		public byte[] SecurityName = new byte[40];                   	//证券名称，可能包含中文字符，表示最多 40个 UTF-8 字符
 		public byte[] SymbolSource = new byte[5];     	//证券代码源，102 = 深圳证券交易所
@@ -461,6 +463,8 @@ public class QDSStruct {
 		public double BuyVolumeUnit;                      //买数量单位，每笔买委托的委托数量必须是买数量单位的整数倍，2位小数
 		public double SellVolumeUnit;                     //卖数量单位，每笔卖委托的委托数量必须是卖数量单位的整数倍，2位小数
 		public AuctionUpDown[] OTC = new AuctionUpDown[3];
+		public int TradeDate;                          // 市场日期,交易日
+		public byte[] QualificationClass = new byte[2];              // 投资者适当性管理分类
 
 
 		@Override
@@ -520,6 +524,8 @@ public class QDSStruct {
 			strList.add("BuyVolumeUnit");
 			strList.add("SellVolumeUnit");
 			strList.add("OTC");
+			strList.add("TradeDate");
+			strList.add("QualificationClass");
 			
 			return strList;
 		}
@@ -527,7 +533,7 @@ public class QDSStruct {
 
 	public static class SZSEL2_Quotation extends Structure
 	{
-		public long QDSTime;		                 	//数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		                 	//数据接收时间: 从1970/1/1开始的微秒数
 		public long Time;                               //数据生成时间YYYYMMDDHHMMSSMMM
 		public byte[] Symbol = new byte[40];                 	//证券代码
 		public byte[] SymbolSource = new byte[5];     	//证券代码源
@@ -565,6 +571,9 @@ public class QDSStruct {
 		public SZSE_BuySellLevelInfo3[] BuyLevel = new SZSE_BuySellLevelInfo3[10];      //十档买行情
 		public int BuyLevelQueueNo01;                  //买一档揭示委托笔数
 		public double[] BuyLevelQueue = new double[50];	   	//揭示买一价前50笔委托，50档，不足补0，2位小数
+		public double WtAvgRate;                          // 实时加权平均利率    质押式回购产品实时行情增加三个字段
+		public double WtAvgRateUpdown;                    // 加权平均利率涨跌BP
+		public double PreWtAvgRate;                       // 昨收盘加权平均利率
 
 		@Override
 		protected List<String> getFieldOrder() {
@@ -604,6 +613,9 @@ public class QDSStruct {
 			strList.add("BuyLevel");
 			strList.add("BuyLevelQueueNo01");
 			strList.add("BuyLevelQueue");
+			strList.add("WtAvgRate");
+			strList.add("WtAvgRateUpdown");
+			strList.add("PreWtAvgRate");
 			return strList;
 		}
 	}
@@ -611,7 +623,7 @@ public class QDSStruct {
 
 	public static class SZSEL2_Transaction extends Structure
 	{
-		public long QDSTime;		                 	//数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		                 	//数据接收时间: 从1970/1/1开始的微秒数
 		public int SetID;                              //证券集代号
 		public long RecID;                              //消息记录号 从 1 开始计数，同一频道连续
 		public long BuyOrderID;                         //买方委托索引
@@ -643,7 +655,7 @@ public class QDSStruct {
 
 	public static class SZSEL2_Index extends Structure
 	{		
-		public long QDSTime;		                 	//数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		                 	//数据接收时间: 从1970/1/1开始的微秒数
 		public long Time;                               //数据生成时间YYYYMMDDHHMMSSMMM
 		public byte[] Symbol = new byte[40];                 	//证券代码
 		public byte[] SymbolSource = new byte[5];     	//102=深圳证券交易所, 103=香港交易所
@@ -682,7 +694,7 @@ public class QDSStruct {
 
 	public static class SZSEL2_Order extends Structure
 	{		
-		public long QDSTime;		                 	//数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		                 	//数据接收时间: 从1970/1/1开始的微秒数
 		public int SetID;                              //证券集代号
 		public long RecID;                              //消息记录号 从 1 开始计数，同一频道连续
 		public byte[] Symbol = new byte[40];                 	//证券代码
@@ -714,7 +726,7 @@ public class QDSStruct {
 
 	public static class SZSEL2_Status extends Structure
 	{		
-		public long QDSTime;		                //数据接收时间: 从1971/1/1开始的微秒数
+		public long QDSTime;		                //数据接收时间: 从1970/1/1开始的微秒数
 		public byte[] Symbol = new byte[40];                 //证券代码
 		public byte[] SymbolSource = new byte[5];     	//证券代码源，102=深圳证券交易所，103=香港交易所
 		public long Time;                               //数据生成时间YYYYMMDDHHMMSSMMM

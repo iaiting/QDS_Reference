@@ -27,7 +27,7 @@ class SSEL2_Static(Structure):
                 ("Time", c_int32),
                 ("Symbol", c_char * 40),
                 ("ISINCode", c_char * 12),
-                ("SecurityName", c_char * 20),
+                ("SecurityName", c_char * 40),
                 ("SecurityEN", c_char * 24),
                 ("SymbolUnderlying", c_char * 40),
                 ("MarketType", c_char * 6),
@@ -59,7 +59,8 @@ class SSEL2_Static(Structure):
                 ("TotalMarketValue", c_double),
                 ("MarketValueRatio", c_double),
                 ("StaticPERatio", c_double),
-                ("IndexLevelStatus", c_char * 20)]
+                ("IndexLevelStatus", c_char * 20),
+                ("TradeDate", c_int32)]
 
 class SSEL2_Quotation(Structure):
      _fields_ = [("QDSTime", c_uint64), 
@@ -222,7 +223,9 @@ class SZSEL2_Static(Structure):
                 ("SellQtyUpperLimit", c_double),
                 ("BuyVolumeUnit", c_double),
                 ("SellVolumeUnit", c_double),
-                ("OTC", POINTER(AuctionUpDown) * 3)]
+                ("OTC", POINTER(AuctionUpDown) * 3),
+                ("TradeDate", c_int32),
+                ("QualificationClass", c_char * 2)]
 
 
 class SZSEL2_Quotation(Structure):
@@ -260,7 +263,10 @@ class SZSEL2_Quotation(Structure):
                 ("BuyLevelNo", c_uint32),
                 ("BuyLevel", POINTER(SZSE_BuySellLevelInfo3) * 10),
                 ("BuyLevelQueueNo01", c_uint32),
-                ("BuyLevelQueue", c_double * 50)]
+                ("BuyLevelQueue", c_double * 50),
+                ("WtAvgRate", c_double),
+                ("WtAvgRateUpdown", c_double),
+                ("PreWtAvgRate", c_double)]
 
 
 class SZSEL2_Transaction(Structure):

@@ -35,6 +35,7 @@ struct  BuySellLevelInfo
 };
 typedef struct  BuySellLevelInfo BuySellLevelInfo;
 
+#if 0
 /// 大商所 买卖档位信息，含价、量、推导量3个信息
 struct  DCE_BuySellLevelInfo3
 {
@@ -56,6 +57,8 @@ struct  DCE_PriceLevelInfo
     unsigned long long  PriceSOQty;          ///< 卖开数量
     unsigned long long  PriceSEQty;          ///< 卖平数量
 };
+#endif
+
 /// 深交所买卖档位信息
 struct SZSE_BuySellLevelInfo
 {
@@ -74,7 +77,7 @@ typedef struct SZSE_BuySellLevelInfo SZSE_BuySellLevelInfo;
 /// 上交所L1静态数据
 struct SSEL1_Static
 {
-	unsigned long long	   QDSTime;		                 	    ///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   QDSTime;		                 	    ///< 数据接收时间: 从1970/1/1开始的微秒数
     int                 Time;                               ///< 数据生成时间，标识接口中本记录更新时间HHMMSSMMM
     char                Symbol[SYMBOL_LEN];                 ///< 证券代码, 
     char                ISINCode[12];                       ///< ISIN代码, 
@@ -82,7 +85,7 @@ struct SSEL1_Static
     char                SecurityEN[SECURITY_EN_LEN];        ///< 英文证券名称, 
     char                SymbolUnderlying[SYMBOL_LEN];       ///< 基础证券代码, 
     char                MarketType[6];                      ///< 市场种类, ‘ASHR’表示A股市场；‘BSHR’表示B股市场；‘CSHR‘表示国际版市场。
-    char                CFICode[6];                         ///< 证券类别, ’E'表示股票；‘EU’表示基金；‘D’表示债券；‘RWS’表示权证；‘FF’表示期货。
+    char                CFICode[6];                         ///< 证券类别, ’ES'表示股票；‘EU’表示基金；‘D’表示债券；‘RWS’表示权证；‘FF’表示期货。
     char                SecuritySubType[6];                 ///< 证券子类别, 自定义详细证券类别
     char                Currency[5];                        ///< 币种, CNY = 人民币，HKD = 港币
     double              ParValue;                           ///< 面值.债券当前面值，单位元，其他产品取0.000
@@ -110,12 +113,13 @@ struct SSEL1_Static
                                                             ///< 第3位对应：’D’表示国内主板正常交易产品，’S’表示股票风险警示产品，’P’表示退市整理产品，’T’表示退市转让产品，’U’表示优先股产品。
                                                             ///< 第4位对应：’S’表示债券风险警示类。第4位未来改为不启用，此改动暂未实施，具体以交易所通知为准。
                                                             ///< 第5位对应：’L’表示债券投资者适当性要求类。
+	int                 TradeDate;                          ///< 市场日期,交易日
 };
 
 /// 上交所L1实时行情
 struct SSEL1_Quotation
 {
-	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
     long long           	Reserved;                    		///< 保留
     int                 	Time;                               ///< 数据生成时间,时间戳143025表示 14:30:25
     char                	Symbol[SYMBOL_LEN];                 ///< 证券代码,期权合约的产品代码;唯一标示
@@ -176,7 +180,7 @@ struct SSEL1_Quotation
 /// 上交所指数通数据
 struct SSE_IndexPress
 {
-	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
  	long long           	Reserved;                    		///< 保留
     int                 TradeDate;                          ///< 交易日,日期的格式为“YYYYMMDD”
     int                 ActionDay;                          ///< 业务发生日,行情文件所代表的自然日期（北京时间），内容为被用于计算的那天的自然日期（北京时间） 日期的格式为“ YYYYMMDD”
@@ -204,7 +208,7 @@ struct SSE_IndexPress
 /// 上交所L2静态数据
 struct SSEL2_Static
 {
-	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
 	long long           	Reserved;                    		///< 保留
 	int                 Time;                               ///< 数据生成时间，标识接口中本记录更新时间HHMMSSMMM
     char                Symbol[SYMBOL_LEN];                 ///< 证券代码, 
@@ -213,7 +217,7 @@ struct SSEL2_Static
     char                SecurityEN[SECURITY_EN_LEN];        ///< 英文证券名称, 
     char                SymbolUnderlying[SYMBOL_LEN];       ///< 基础证券代码, 
     char                MarketType[6];                      ///< 市场种类, ‘ASHR’表示A股市场；‘BSHR’表示B股市场；‘CSHR‘表示国际版市场。
-    char                CFICode[6];                         ///< 证券类别, ’E'表示股票；‘EU’表示基金；‘D’表示债券；‘RWS’表示权证；‘FF’表示期货。
+    char                CFICode[6];                         ///< 证券类别, ’ES'表示股票；‘EU’表示基金；‘D’表示债券；‘RWS’表示权证；‘FF’表示期货。
     char                SecuritySubType[6];                 ///< 证券子类别, 自定义详细证券类别
     char                Currency[5];                        ///< 币种, CNY = 人民币，HKD = 港币
     double              ParValue;                           ///< 面值,债券当前面值，单位元，其他产品取0.000
@@ -246,13 +250,14 @@ struct SSEL2_Static
                                                             ///< 1 为重点指数
                                                             ///< 2 为全貌指数
                                                             ///< 其他可根据需要扩展。
+	int                 TradeDate;                          ///< 市场日期,交易日 YYYYMMDD
 };
 typedef struct SSEL2_Static SSEL2_Static;
 
 /// 上交所L2实时行情
 struct SSEL2_Quotation
 {
-	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
 	long long           	Reserved;                    		///< 保留
     int                 Time;                   ///< 数据生成时间, 最新订单时间（毫秒）;143025001 表示 14:30:25.001
     char                Symbol[SYMBOL_LEN];     ///< 证券代码, 
@@ -386,7 +391,7 @@ struct SSEL2_Quotation
 /// 上交所L2指数行情
 struct SSEL2_Index
 {
-	unsigned long long	   	QDSTime;		       	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		       	///< 数据接收时间: 从1970/1/1开始的微秒数
 	long long           	Reserved;               ///< 保留
     int                 Time;                   ///< 数据生成时间(毫秒), 143025000 表示 14:30:25000
     int                 TradeTime;              ///< 成交时间(毫秒),
@@ -405,7 +410,7 @@ typedef struct SSEL2_Index SSEL2_Index;
 /// 上交所L2逐笔成交
 struct SSEL2_Transaction
 {
-	unsigned long long	   	QDSTime;		       	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		       	///< 数据接收时间: 从1970/1/1开始的微秒数
 	long long           	Reserved;              	///< 保留
     int                 TradeTime;              ///< 成交时间(毫秒), 14302506 表示14:30:25.06
     unsigned int        RecID;                  ///< 业务索引, 从 1 开始，按 TradeChannel连续
@@ -423,7 +428,7 @@ typedef struct SSEL2_Transaction SSEL2_Transaction;
 /// 上交所L2虚拟集合竞价
 struct SSEL2_Auction
 {
-	unsigned long long	QDSTime;		       	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	QDSTime;		       	///< 数据接收时间: 从1970/1/1开始的微秒数
 	long long        	Reserved;              	///< 保留
     int            	Time;                   ///< 数据生成时间, 143025001 表示 14:30:25.001
     char            	Symbol[SYMBOL_LEN];     	///< 证券代码,
@@ -437,7 +442,7 @@ typedef struct SSEL2_Auction SSEL2_Auction;
 /// 上交所L2市场总览
 struct SSEL2_Overview
 {
-	unsigned long long	   	QDSTime;		      	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		      	///< 数据接收时间: 从1970/1/1开始的微秒数
 	long long          	Reserved;              	///< 保留
     int                 	Time;                   ///< 数据生成时间, 143025001 表示 14:30:25.001
     char                	Symbol[SYMBOL_LEN];     	///< 证券代码,
@@ -449,7 +454,7 @@ typedef struct SSEL2_Overview SSEL2_Overview;
 /// 上交所个股期权静态数据
 struct SSEIOL1_Static
 {
-	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
 	long long           	Reserved;                    		///< 保留
     char                Symbol[SYMBOL_LEN];                 ///< 证券代码（合约代码）, 合约期权产品代码，8位字符;唯一标示
     char                ContractID [19];                    ///< 合约交易代码 , 合约交易代码17位，按以下顺序编写：1、第1至第6位为数字，取标的证券代码，如工商银行601398，取“601398”；2、第7位为C(Call)或者P(Put)，分别表示认购期权或者认沽期权；3、第8、9位表示到期年份；4、第10、11位表示到期月份；5、第12位期初设为“M”，表示月份合约。当合约首次调整后，“M”修改为 “A”，以表示该合约被调整过一次，如发生第二次调整，则“A”修改为“B”、“M”修改为 “A”，以此类推；6、第13至17位表示期权行权价格.留两位备用
@@ -491,13 +496,14 @@ struct SSEIOL1_Static
                                                             ///< 第5位：‘A’表示当日新挂牌的合约，‘E’表示存续的合约，‘D’表示当日摘牌的合约。
                                                             ///< 第6位：‘1’表示合约只能进行跨式和宽跨式的组合策略，‘0’表示可以进行所有的组合策略
     int                 AutoSplitDate;                      ///< 该日期表示垂直价差组合策略到期解除的日期，YYYYMMDD； 对于E-2后波动加挂的合约，此字段仍为E-2日。到期日调整时，此字段信息自动同步调整。
+	int                 TradeDate;                         	///< 市场日期,交易日
 };
 typedef struct SSEIOL1_Static SSEIOL1_Static;
 
 /// 上交所个股期权实时行情
 struct SSEIOL1_Quotation
 {
-	unsigned long long	   	QDSTime;		      	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		      	///< 数据接收时间: 从1970/1/1开始的微秒数
 	long long           	Reserved;             	///< 保留
     int                 Time;                   ///< 数据生成时间, 143025001表示 14:30:25.001;如果期权合约的产品代码为“00000000”，则表示行情时间，格式为HHMMSSMMM;有成交时才会变化
     char                Symbol[SYMBOL_LEN];     ///< 合约代码（证券代码）, 期权合约的产品代码;唯一标示
@@ -574,7 +580,7 @@ typedef struct AuctionUpDown AuctionUpDown;
 /// 深交所L1实时行情
 struct SZSEL1_Quotation
 {
-	unsigned long long	   QDSTime;		                 	    ///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   QDSTime;		                 	    ///< 数据接收时间: 从1970/1/1开始的微秒数
     long long           Time;                               ///< 数据生成时间YYYYMMDDHHMMSSsss
     char                Symbol[SYMBOL_LEN];                 ///< 证券代码. 证券代码以395打头的记录为成交量统计指标记录
     char                SymbolSource[SYMBOLSOURCE_LEN];     ///< 证券代码源，102 = 深圳证券交易所,103=香港交易所
@@ -636,12 +642,15 @@ struct SZSEL1_Quotation
             double              BuyVolume05;            ///< 申买量五
         };
     };
+	double              WtAvgRate;                          ///< 实时加权平均利率    质押式回购产品实时行情增加三个字段
+	double              WtAvgRateUpdown;                    ///< 加权平均利率涨跌BP
+	double              PreWtAvgRate;                       ///< 昨收盘加权平均利率
 };
 
 /// 深交所公告消息头
 struct SZSEL1_BulletinHead
 {
-	unsigned long long	   QDSTime;		                 	    ///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   QDSTime;		                 	    ///< 数据接收时间: 从1970/1/1开始的微秒数
     long long       Time;                               ///< 数据生成时间YYYYMMDDHHMMSSsss
     unsigned int    SetID;                              ///< 频道代码
     char            NewsID[12];                         ///< 公告标识, 空串代表公告摘要, 会重复发送. 通过摘要可确定公告是否有遗漏
@@ -661,7 +670,7 @@ struct SZSEL1_Bulletin
 /// 深交所L2静态数据
 struct SZSEL2_Static
 {
-	unsigned long long	   QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
     char            Symbol[SYMBOL_LEN];                 	///< 证券代码，8个字符
     char            SecurityName[40];                   	///< 证券名称，可能包含中文字符，表示最多 40个 UTF-8 字符
     char            SymbolSource[SYMBOLSOURCE_LEN];     	///< 证券代码源，102 = 深圳证券交易所
@@ -747,6 +756,8 @@ struct SZSEL2_Static
             double          AuctionUpDownAbsoluteC;           ///< 收盘集合竞价有效范围涨跌价格，4位小数
         };
     };
+	int             TradeDate;                          ///< 市场日期,交易日
+	char            QualificationClass[2];              ///< 投资者适当性管理分类
 };
 typedef struct SZSEL2_Static SZSEL2_Static;
 //typedef SZSEL2_Static SZSEL1_Static;
@@ -754,7 +765,7 @@ typedef struct SZSEL2_Static SZSEL2_Static;
 /// 深交所L2证券状态
 struct SZSEL2_Status
 {
-	unsigned long long	   QDSTime;		                ///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   QDSTime;		                ///< 数据接收时间: 从1970/1/1开始的微秒数
     char        Symbol[SYMBOL_LEN];                 	///< 证券代码
     char        SymbolSource[SYMBOLSOURCE_LEN];     	///< 证券代码源，102=深圳证券交易所，103=香港交易所
     long long   Time;                               	///< 数据生成时间YYYYMMDDHHMMSSMMM
@@ -787,7 +798,7 @@ typedef struct SZSEL2_Status SZSEL2_Status;
 /// 深交所L2实时行情
 struct SZSEL2_Quotation
 {
-	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
     long long          	Time;                               ///< 数据生成时间YYYYMMDDHHMMSSMMM
     char                	Symbol[SYMBOL_LEN];                 	///< 证券代码
     char                	SymbolSource[SYMBOLSOURCE_LEN];     	///< 证券代码源
@@ -897,13 +908,16 @@ struct SZSEL2_Quotation
     };
     unsigned int        	BuyLevelQueueNo01;                  ///< 买一档揭示委托笔数
     double              	BuyLevelQueue[ORDER_LEVEL_FIFTY];	   	///< 揭示买一价前50笔委托，50档，不足补0，2位小数
+	double              	WtAvgRate;                          ///< 实时加权平均利率    质押式回购产品实时行情增加三个字段
+	double              	WtAvgRateUpdown;                    ///< 加权平均利率涨跌BP
+	double              	PreWtAvgRate;                       ///< 昨收盘加权平均利率
 };
 typedef struct SZSEL2_Quotation SZSEL2_Quotation;
 
 /// 深交所L2指数行情
 struct SZSEL2_Index
 {
-	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
     long long           	Time;                               ///< 数据生成时间YYYYMMDDHHMMSSMMM
     char                Symbol[SYMBOL_LEN];                 	///< 证券代码
     char                SymbolSource[SYMBOLSOURCE_LEN];     	///< 102=深圳证券交易所, 103=香港交易所
@@ -923,7 +937,7 @@ typedef struct SZSEL2_Index SZSEL2_Index;
 /// 深交所L2逐笔委托
 struct SZSEL2_Order
 {
-	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
     unsigned int        	SetID;                              ///< 频道代码
     unsigned long long  	RecID;                              ///< 消息记录号:从 1 开始计数，同一频道连续
     char                	Symbol[SYMBOL_LEN];                 	///< 证券代码
@@ -939,7 +953,7 @@ typedef struct SZSEL2_Order SZSEL2_Order;
 /// 深交所L2逐笔成交
 struct SZSEL2_Transaction
 {
-	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1971/1/1开始的微秒数
+	unsigned long long	   	QDSTime;		                 	///< 数据接收时间: 从1970/1/1开始的微秒数
     unsigned int        	SetID;                              ///< 证券集代号
     unsigned long long  	RecID;                              ///< 消息记录号 从 1 开始计数，同一频道连续
     unsigned long long  	BuyOrderID;                         ///< 买方委托索引

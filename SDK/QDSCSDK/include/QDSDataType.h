@@ -64,7 +64,7 @@ enum RetCode
 
 /// 数据结构字段长度定义
 #define SYMBOL_LEN          40      ///< 代码长度
-#define SECURITY_NAME_LEN   20      ///< 证券名称长度
+#define SECURITY_NAME_LEN   40      ///< 证券名称长度
 #define SECURITY_EN_LEN     24      ///< 英文证券简称
 #define MARKET_TAG_LEN      10      ///< 市场标志长度
 #define TIMEOUT_DEFAULT     3       ///< 默认设置超时时长

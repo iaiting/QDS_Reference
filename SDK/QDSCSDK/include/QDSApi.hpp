@@ -30,10 +30,13 @@
 
 #include "QDSApiCallbackBase.h"
 
+#include <string>
+using namespace std;
+
 class QDSApi
 {
 public:
-	QDS_API_EXPORT static QDSApi* CreateInstance(QDSApiCallbackBase& CallBack);
+	QDS_API_EXPORT static QDSApi* CreateInstance(QDSApiCallbackBase& CallBack, bool bStdout = false);
 	
 	/// 注册行情服务器地址
 	/// @param  pIP         -- 服务器地址.
@@ -74,8 +77,16 @@ public:
 	/// @param  pInstance   -- 实例对象指针.
 	QDS_API_EXPORT static void ReleaseInstance(QDSApi* pInstance);
 	
+	/// 取当前系统时间：返回从1970/1/1开始的微秒数
+	QDS_API_EXPORT static unsigned long long GetMicroSeconds();
+
+	QDS_API_EXPORT static string QDSTime2str(unsigned long long us);
+
+	QDS_API_EXPORT void reportAppTime(unsigned long long QDSTime, unsigned long long callbackTime);
+	
 private:
 	virtual RetCode Connect();
+	void setAppDelayAver(unsigned long long v);
 
 private:
 	QDSApiCallbackBase *pCallBack;

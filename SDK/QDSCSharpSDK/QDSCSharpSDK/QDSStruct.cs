@@ -33,14 +33,14 @@ namespace QDSCSharpSDK
 
     public struct SSEL2_Static
     {
-        public UInt64 QDSTime;                         // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;                         // 数据接收时间: 从1970/1/1开始的微秒数
         public Int64 Reserved;                         // 保留
         public Int32 Time;                               // 数据生成时间，标识接口中本记录更新时间HHMMSSMMM
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
         public string Symbol;                 // 证券代码, 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 12)]
         public string ISINCode;                       // ISIN代码, 
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 20)]
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
         public string SecurityName;    // 证券名称, 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 24)]
         public string SecurityEN;        // 英文证券名称, 
@@ -49,7 +49,7 @@ namespace QDSCSharpSDK
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 6)]
         public string MarketType;                      // 市场种类, ‘ASHR’表示A股市场；‘BSHR’表示B股市场；‘CSHR‘表示国际版市场。
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 6)]
-        public string CFICode;                         // 证券类别, ’E'表示股票；‘EU’表示基金；‘D’表示债券；‘RWS’表示权证；‘FF’表示期货。
+        public string CFICode;                         // 证券类别, ’ES'表示股票；‘EU’表示基金；‘D’表示债券；‘RWS’表示权证；‘FF’表示期货。
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 6)]
         public string SecuritySubType;                 // 证券子类别, 自定义详细证券类别
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 5)]
@@ -83,14 +83,15 @@ namespace QDSCSharpSDK
         public double StaticPERatio;                      // 静态市盈率, 指数当前样本的静态市盈率。公式：合计（人民币收盘价*发行量） /合计（每股收益*发行量）,若该指标未统计则输出 N/A
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 20)]
         public string IndexLevelStatus;               // 指数级别标识, 前 5 位为指数排序数值，最后一位即指数级别信息：
-                                                 // 1 为重点指数
-                                                 // 2 为全貌指数
-                                                 // 其他可根据需要扩展。
+                                                      // 1 为重点指数
+                                                      // 2 为全貌指数
+                                                      // 其他可根据需要扩展。
+        public Int32 TradeDate;             //市场日期,交易日 YYYYMMDD
     };
 
     public struct SSEL2_Quotation
     {
-        public UInt64 QDSTime;                         // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;                         // 数据接收时间: 从1970/1/1开始的微秒数
         public Int64 Reserved;                         // 保留
         public Int32 Time;                   // 数据生成时间, 最新订单时间（毫秒）;143025001 表示 14:30:25.001
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
@@ -159,7 +160,7 @@ namespace QDSCSharpSDK
 
     public struct SSEL2_Transaction
     {
-        public UInt64 QDSTime;             // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;             // 数据接收时间: 从1970/1/1开始的微秒数
         public Int64 Reserved;                 // 保留
         public Int32 TradeTime;              // 成交时间(毫秒), 14302506 表示14:30:25.06
         public UInt32 RecID;                  // 业务索引, 从 1 开始，按 TradeChannel连续
@@ -176,7 +177,7 @@ namespace QDSCSharpSDK
 
     public struct SSEL2_Index
     {
-        public UInt64 QDSTime;             // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;             // 数据接收时间: 从1970/1/1开始的微秒数
         public Int64 Reserved;               // 保留
         public Int32 Time;                   // 数据生成时间(毫秒), 143025000 表示 14:30:25000
         public Int32 TradeTime;              // 成交时间(毫秒),
@@ -194,7 +195,7 @@ namespace QDSCSharpSDK
 
     public struct SSEL2_Auction
     {
-        public UInt64 QDSTime;             // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;             // 数据接收时间: 从1970/1/1开始的微秒数
         public Int64 Reserved;                 // 保留
         public Int32 Time;                   // 数据生成时间, 143025001 表示 14:30:25.001
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
@@ -207,7 +208,7 @@ namespace QDSCSharpSDK
 
     public struct SSEL2_Overview
     {
-        public UInt64 QDSTime;             // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;             // 数据接收时间: 从1970/1/1开始的微秒数
         public Int64 Reserved;                 // 保留
         public Int32 Time;                   // 数据生成时间, 143025001 表示 14:30:25.001
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
@@ -218,7 +219,7 @@ namespace QDSCSharpSDK
 
     public struct SZSEL2_Static
     {
-        public UInt64 QDSTime;                         // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;                         // 数据接收时间: 从1970/1/1开始的微秒数
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
         public string Symbol;     // 证券代码, 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
@@ -294,12 +295,15 @@ namespace QDSCSharpSDK
         public double SellVolumeUnit;                     // 卖数量单位，每笔卖委托的委托数量必须是卖数量单位的整数倍，2位小数
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public AuctionUpDown[] OTC;
+        public Int32 TradeDate;                         //市场日期,交易日
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 2)]
+        public string QualificationClass;               //投资者适当性管理分类
     };
 
 
     public struct SZSEL2_Quotation
     {
-        public UInt64 QDSTime;                         // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;                         // 数据接收时间: 从1970/1/1开始的微秒数
         public Int64 Time;                               // 数据生成时间YYYYMMDDHHMMSSMMM
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
         public string Symbol;                    // 证券代码
@@ -345,12 +349,16 @@ namespace QDSCSharpSDK
         public SZSE_BuySellLevelInfo3[] BuyLevel;      // 十档买行情
         public UInt32 BuyLevelQueueNo01;                  // 买一档揭示委托笔数
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 50)]
-        public double[] BuyLevelQueue;	   	// 揭示买一价前50笔委托，50档，不足补0，2位小数
-};
+        public double[] BuyLevelQueue;      // 揭示买一价前50笔委托，50档，不足补0，2位小数
+        public double WtAvgRate;            // 实时加权平均利率    质押式回购产品实时行情增加三个字段
+        public double WtAvgRateUpdown;                    //加权平均利率涨跌BP
+        public double PreWtAvgRate;                       //昨收盘加权平均利率
+
+    };
 
     public struct SZSEL2_Transaction
     {
-        public UInt64 QDSTime;                         // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;                         // 数据接收时间: 从1970/1/1开始的微秒数
         public UInt32 SetID;                              // 证券集代号
         public UInt64 RecID;                              // 消息记录号 从 1 开始计数，同一频道连续
         public UInt64 BuyOrderID;                         // 买方委托索引
@@ -367,7 +375,7 @@ namespace QDSCSharpSDK
 
     public struct SZSEL2_Index
     {
-        public UInt64 QDSTime;                         // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;                         // 数据接收时间: 从1970/1/1开始的微秒数
         public Int64 Time;                               // 数据生成时间YYYYMMDDHHMMSSMMM
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
         public string Symbol;                    // 证券代码
@@ -388,7 +396,7 @@ namespace QDSCSharpSDK
 
     public struct SZSEL2_Order
     {
-        public UInt64 QDSTime;                         // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;                         // 数据接收时间: 从1970/1/1开始的微秒数
         public UInt32 SetID;                              // 频道代码
         public UInt64 RecID;                              // 消息记录号:从 1 开始计数，同一频道连续
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
@@ -404,7 +412,7 @@ namespace QDSCSharpSDK
 
     public struct SZSEL2_Status
     {
-        public UInt64 QDSTime;                     // 数据接收时间: 从1971/1/1开始的微秒数
+        public UInt64 QDSTime;                     // 数据接收时间: 从1970/1/1开始的微秒数
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 40)]
         public string Symbol;                    // 证券代码
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 5)]

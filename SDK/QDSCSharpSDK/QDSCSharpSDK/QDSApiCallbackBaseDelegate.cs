@@ -51,62 +51,50 @@ namespace QDSCSharpSDK
 
         static public void OnSubscribe_SSEL2_Static(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SSEL2_Static(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SSEL2_Quotation(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SSEL2_Quotation(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SSEL2_Index(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SSEL2_Index(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SSEL2_Transaction(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SSEL2_Transaction(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SSEL2_Auction(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SSEL2_Auction(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SSEL2_Overview(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SSEL2_Overview(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SZSEL2_Static(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SZSEL2_Static(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SZSEL2_Quotation(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SZSEL2_Quotation(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SZSEL2_Status(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SZSEL2_Status(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SZSEL2_Index(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SZSEL2_Index(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SZSEL2_Order(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SZSEL2_Order(RealValuePtr);
-            GC.Collect();
         }
 
         static public void OnSubscribe_SZSEL2_Transaction(IntPtr RealValuePtr) {
             m_callbackBase.OnSubscribe_SZSEL2_Transaction(RealValuePtr);
-            GC.Collect();
         }
     }
 }
